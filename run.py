@@ -21,12 +21,9 @@ with open(f"{project_dir}/state.json") as f:
 result = subprocess.run(job_command.split(), stdout=subprocess.PIPE)
 stdout = result.stdout.decode()
 
-last_backoff_index
-new_backoff_index = 0
-if "running" in stdout:
-    new_backoff_index = last_backoff_index
-    if last_backoff_index < (len(backoff_times) - 1):
-        new_backoff_index += 1
+new_backoff_index = min(last_backoff_index + 1, len(backoff_times) - 1)
+if "finished" in stdout:
+    new_backoff_index = 0
 
 with open(f"{project_dir}/report.txt", "a") as f:
     f.write(str(datetime.now()) + "\n")
@@ -35,4 +32,6 @@ with open(f"{project_dir}/report.txt", "a") as f:
 with open(f"{project_dir}/state.json", "w") as f:
     json.dump({"last_backoff_index": new_backoff_index}, f)
 
-os.system(f"echo \"python3 {project_dir}/run.py\" | at now + {backoff_times[new_backoff_index]}")
+os.system(
+    f'echo "python3 {project_dir}/run.py" | at now + {backoff_times[new_backoff_index]}'
+)
