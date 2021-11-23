@@ -6,5 +6,7 @@
         "2 hours",
         "24 hours"
     ],
-    "job_command": "bash <do-something>"
+    "job_command": "bash <do-something>",
+    "keyword_for_short_delay": "started",
+    "keyword_for_long_delay": "failed"
 }
