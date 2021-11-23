@@ -1,0 +1,10 @@
+{
+    "backoff_times": [
+        "1 minutes",
+        "4 minutes",
+        "12 minutes",
+        "2 hours",
+        "24 hours"
+    ],
+    "job_command": "bash <do-something>"
+}
