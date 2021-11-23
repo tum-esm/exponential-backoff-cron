@@ -3,6 +3,7 @@
 ## What is it?
 
 This repository contains a program that can be used as a deamon (https://en.wikipedia.org/wiki/Daemon_(computing)) to execute commands periodically - similar to `crontab`. However, when the next execution will start is determined from the output stream of the current execution of the command. Under the hood, it uses the `at` command (https://en.wikipedia.org/wiki/At_(command)), so it only works on Unix-like systems.
+Author: Moritz Makowski, moritz.makowski@tum.de
 
 <br/>
 <br/>
@@ -35,10 +36,6 @@ Example usecase:
 -   "started" = A new job with unknown execution time has been started -> restart delay-progress
 -   "failed" = A job has failed (e.g. no data available) -> no point in retrying soon
 -   in any other case = no job has ended or been started -> wait a little longer for the next retry
-
-Authors:
-
--   Moritz Makowski, moritz.makowski@tum.de
 
 <br/>
 <br/>
